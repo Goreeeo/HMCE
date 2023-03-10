@@ -1,8 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using HMCE.Parsing;
+using HMCE.Parsing.HOI;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -92,14 +95,21 @@ namespace HMCE
 
         public static ProjectType projectType;
 
+#if DEBUG
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+#endif
+
         public MainWindow()
         {
+#if DEBUG
+            AllocConsole();
+#endif
             InitializeComponent();
             GetRecentProjects();
             ScintillaManager.Init(scintilla);
             HMCE.FocusTreeViewer.Init(FocusTreeViewer);
-            new Focus("ass", "GFX_focus_icon_name", null, null, null, "0", "0");
-            FocusCollection.OnCompleteRegister();
         }
 
         private void GetRecentProjects()

@@ -39,6 +39,7 @@ namespace HMCE
             scintilla.Styles[Lexer.StyleVariable].ForeColor = System.Drawing.Color.FromArgb(70, 111, 145, 255);
             scintilla.Styles[Lexer.StyleKeyword].ForeColor = System.Drawing.Color.FromArgb(70, 104, 237, 97);
             scintilla.Styles[Lexer.StyleParameter].ForeColor = System.Drawing.Color.FromArgb(70, 234, 125, 97);
+            scintilla.AutoCSeparator = ';';
 
             hoi = new HOILexer(scintilla);
             lexers.Add(MainWindow.ProjectType.HeartsOfIronIV, hoi);

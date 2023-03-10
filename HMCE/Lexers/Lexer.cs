@@ -104,12 +104,26 @@ namespace HMCE.Lexers
 
         public string currentPath = "";
 
+        private string autoShowListString;
+
         public Lexer(Scintilla scintilla)
         {
             scintilla.StyleNeeded += (s, se) =>
             {
                 Style(scintilla, scintilla.GetEndStyled(), se.Position, currentPath, false);
             };
+
+            string autoShowListString = "";
+
+            List<string> autoShowList = BuildAutoCompleteList();
+
+            foreach (string element in autoShowList)
+            {
+                autoShowListString += element.ToLower();
+                autoShowListString += ';';
+            }
+
+            autoShowListString.TrimEnd(';');
 
             scintilla.CharAdded += CharAdded;
         }
@@ -516,6 +530,8 @@ namespace HMCE.Lexers
                     return;
                 }
             }
+
+            scintilla.AutoCShow(lenEntered, autoShowListString);
         }
     }
 }

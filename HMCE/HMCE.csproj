@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Pfim, Version=0.11.2.0, Culture=neutral, PublicKeyToken=c0ebc20d008ae134, processorArchitecture=MSIL">
       <HintPath>..\packages\Pfim.0.11.2\lib\netstandard2.0\Pfim.dll</HintPath>
@@ -70,6 +73,11 @@
     <Compile Include="FocusTreeViewer.cs" />
     <Compile Include="Lexers\HOILexer.cs" />
     <Compile Include="Lexers\Lexer.cs" />
+    <Compile Include="Parsing\HOI\ASTPrinter.cs" />
+    <Compile Include="Parsing\HOI\FocusTreeLexer.cs" />
+    <Compile Include="Parsing\HOI\FocusToken.cs" />
+    <Compile Include="Parsing\HOI\FocusTreeParser.cs" />
+    <Compile Include="Parsing\HOI\FocusTreeStatement.cs" />
     <Compile Include="ScintillaManager.cs" />
     <Compile Include="Util\IntExtensions.cs" />
     <Compile Include="Util\StringExtensions.cs" />
